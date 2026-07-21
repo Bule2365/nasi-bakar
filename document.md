@@ -62,13 +62,13 @@ Tidak diperbolehkan membuat file tambahan tanpa instruksi yang eksplisit.
 ### Alamat
 
 ```text
-Jl. Bukit Cinere 1 No.150cc
+Jl. Bukit Cinere 1
 ```
 
 ### WhatsApp Tujuan
 
 ```text
-6281234567890
+6281310283191
 ```
 
 > Nomor di atas dapat diganti sewaktu-waktu tanpa mengubah logika aplikasi.
@@ -110,6 +110,10 @@ Shopping Cart
 Form Checkout
         ↓
 Checkout Button
+        ↓
+Alamat Lokasi
+        ↓
+Google Maps (Link)
         ↓
 Footer
 ```
@@ -246,6 +250,14 @@ spasi
 
 sebelum diproses oleh JavaScript.
 
+### Alamat Pengiriman
+
+```text
+Wajib diisi.
+
+Minimal 5 karakter.
+```
+
 ---
 
 # CHECKOUT RULES
@@ -262,6 +274,8 @@ Tombol checkout hanya aktif apabila :
 Nama valid
         +
 Nomor WA valid
+        +
+Alamat valid
         +
 Cart > 0
         ↓

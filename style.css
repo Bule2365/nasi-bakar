@@ -211,6 +211,20 @@ section h2 {
     font-weight: 500;
 }
 
+.btn-remove {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 0.25rem;
+    line-height: 1;
+}
+
+.btn-remove:hover {
+    color: #c0392b;
+}
+
 #cart-total {
     margin-top: 1rem;
     padding-top: 1rem;
@@ -336,10 +350,77 @@ footer p:last-child {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-#google-maps iframe {
+.map-link {
     display: block;
-    width: 100%;
-    min-height: 250px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.map-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f0f4f8;
+    border: 2px dashed #d4451a;
+    border-radius: 8px;
+    min-height: 200px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.map-link:hover .map-placeholder {
+    background-color: #e8f0fe;
+}
+
+.map-placeholder svg {
+    color: #d4451a;
+    margin-bottom: 1rem;
+}
+
+.map-placeholder p {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #d4451a;
+    margin-bottom: 0.5rem;
+}
+
+.map-placeholder span {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* UX Enhancements */
+.menu-item-image {
+    object-fit: cover;
+}
+
+.menu-item:hover {
+    border-color: #d4451a;
+    box-shadow: 0 2px 8px rgba(212, 69, 26, 0.15);
+}
+
+.cart-item {
+    padding: 0.75rem;
+    border-left: 3px solid #d4451a;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+}
+
+.form-group input.success,
+.form-group textarea.success {
+    border-color: #27ae60;
 }
 
 /* ==========================================
@@ -407,8 +488,8 @@ footer p:last-child {
         padding: 1.125rem;
     }
 
-    #google-maps iframe {
-        min-height: 300px;
+    #google-maps .map-placeholder {
+        min-height: 250px;
     }
 }
 
@@ -501,8 +582,8 @@ footer p:last-child {
         font-size: 1.1rem;
     }
 
-    #google-maps iframe {
-        min-height: 350px;
+    #google-maps .map-placeholder {
+        min-height: 300px;
     }
 
     footer {

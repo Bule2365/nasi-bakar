@@ -57,12 +57,18 @@ function cleanPhoneNumber(phone) {
 }
 
 function validateName(name) {
-    return name.trim().length >= 3;
+    const isValid = name.trim().length >= 3;
+    namaInputEl.classList.toggle('error', !isValid && name.length > 0);
+    namaInputEl.classList.toggle('success', isValid);
+    return isValid;
 }
 
 function validateWhatsApp(phone) {
     const cleaned = cleanPhoneNumber(phone);
-    return cleaned.length >= 10 && cleaned.length <= 15;
+    const isValid = cleaned.length >= 10 && cleaned.length <= 15;
+    whatsappInputEl.classList.toggle('error', !isValid && phone.length > 0);
+    whatsappInputEl.classList.toggle('success', isValid);
+    return isValid;
 }
 
 function isCartNotEmpty() {
@@ -70,7 +76,10 @@ function isCartNotEmpty() {
 }
 
 function validateAlamat(alamat) {
-    return alamat.trim().length >= 5;
+    const isValid = alamat.trim().length >= 5;
+    alamatInputEl.classList.toggle('error', !isValid && alamat.length > 0);
+    alamatInputEl.classList.toggle('success', isValid);
+    return isValid;
 }
 
 function validateForm() {
@@ -137,7 +146,16 @@ function redirectToWhatsApp() {
 function handleCheckout() {
     if (!validateForm()) return;
 
-    redirectToWhatsApp();
+    const totalItems = calculateTotalItems();
+    const totalPrice = calculateTotalPrice();
+    const confirmMessage = 'Konfirmasi pesanan:\n' +
+        'Total item: ' + totalItems + '\n' +
+        'Total harga: Rp ' + totalPrice.toLocaleString('id-ID') + '\n\n' +
+        'Lanjutkan ke WhatsApp?';
+
+    if (confirm(confirmMessage)) {
+        redirectToWhatsApp();
+    }
 }
 
 // ==========================================
@@ -157,7 +175,7 @@ function renderMenu() {
         const quantity = cartItem ? cartItem.quantity : 0;
 
         menuEl.innerHTML = 
-            '<img src="' + menu.image + '" alt="' + menu.name + '" class="menu-item-image">' +
+            '<img src="' + menu.image + '" alt="' + menu.name + '" class="menu-item-image" loading="lazy">' +
             '<div class="menu-item-info">' +
                 '<div class="menu-item-name">' + menu.name + '</div>' +
                 '<div class="menu-item-price">Rp ' + menu.price.toLocaleString('id-ID') + '</div>' +
@@ -267,9 +285,18 @@ function renderCart() {
         cartItemEl.innerHTML = 
             '<span class="cart-item-name">' + item.name + '</span>' +
             '<span class="cart-item-qty">x' + item.quantity + '</span>' +
-            '<span class="cart-item-price">Rp ' + (item.price * item.quantity).toLocaleString('id-ID') + '</span>';
+            '<span class="cart-item-price">Rp ' + (item.price * item.quantity).toLocaleString('id-ID') + '</span>' +
+            '<button class="btn-remove" data-id="' + item.id + '" title="Hapus item">×</button>';
 
         cartListEl.appendChild(cartItemEl);
+    });
+
+    const removeButtons = cartListEl.querySelectorAll('.btn-remove');
+    removeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const menuId = this.getAttribute('data-id');
+            removeFromCart(menuId);
+        });
     });
 
     const totalPrice = calculateTotalPrice();

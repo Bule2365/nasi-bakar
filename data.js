@@ -26,38 +26,38 @@ const BUSINESS_DATA = {
 const MENU_DATA = [
     {
         id: "ayam",
-        name: "Nasi Bakar Ayam",
+        name: "Nasi Bakar Ayam Suwir",
         price: 10000,
-        image: "assets/images/nasi-bakar-ayam.jpg"
+        image: "assets/images/nasiBakar-ayamSuwir.png"
     },
     {
         id: "tongkol",
         name: "Nasi Bakar Tongkol",
         price: 10000,
-        image: "assets/images/nasi-bakar-tongkol.jpg"
+        image: "assets/images/nasiBakar-tongkol.png"
     },
     {
         id: "ayam-jamur",
-        name: "Nasi Bakar Ayam Jamur",
+        name: "Nasi Bakar Ayam Jamur Suwir",
         price: 10000,
-        image: "assets/images/nasi-bakar-ayam-jamur.jpg"
+        image: "assets/images/nasiBakar-ayamJamurSuwir.png"
     },
     {
         id: "ati-ampela",
         name: "Nasi Bakar Ati Ampela",
         price: 10000,
-        image: "assets/images/nasi-bakar-ati-ampela.jpg"
+        image: "assets/images/nasiBakar-atiAmpela.png"
     },
     {
         id: "cumi",
         name: "Nasi Bakar Cumi",
         price: 13000,
-        image: "assets/images/nasi-bakar-cumi.jpg"
+        image: "assets/images/nasiBakar-cumi.png"
     },
     {
         id: "teri",
         name: "Nasi Bakar Teri",
         price: 13000,
-        image: "assets/images/nasi-bakar-teri.jpg"
+        image: "assets/images/nasiBakar-teri.png"
     }
 ];

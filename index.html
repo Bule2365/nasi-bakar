@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nasi Bakar Mama Aura - Nasi bakar enak dan lezat">
+    <title>Nasi Bakar Mama Aura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar / Hero -->
+    <header>
+        <nav>
+            <h1>Nasi Bakar Mama Aura</h1>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Jam Operasional -->
+        <section id="jam-operasional">
+            <h2>Jam Operasional</h2>
+            <p>06:30 AM - 10:00 AM WIB</p>
+            <p>Jl. Bukit Cinere 1</p>
+            <p>Pesanan di luar jam operasional (06:30 AM - 10:00 AM WIB) akan diproses pada hari berikutnya.</p>
+        </section>
+
+        <!-- Menu Produk -->
+        <section id="menu">
+            <h2>Menu Kami</h2>
+            <div id="menu-list">
+                <!-- Menu items akan dirender oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- Shopping Cart -->
+        <section id="keranjang">
+            <h2>Keranjang Belanja</h2>
+            <div id="cart-list">
+                <!-- Cart items akan dirender oleh JavaScript -->
+            </div>
+            <div id="cart-empty">
+                <p>Belum ada pesanan.</p>
+                <p>Silakan pilih menu terlebih dahulu.</p>
+            </div>
+            <div id="cart-total">
+                <p>Total: <span id="total-harga">Rp 0</span></p>
+            </div>
+        </section>
+
+        <!-- Form Checkout -->
+        <section id="checkout-form">
+            <h2>Informasi Pemesanan</h2>
+            <form id="form-pemesanan">
+                <div class="form-group">
+                    <label for="nama">Nama</label>
+                    <input 
+                        type="text" 
+                        id="nama" 
+                        name="nama" 
+                        placeholder="Masukkan nama Anda" 
+                        required
+                        minlength="3"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="whatsapp">Nomor WhatsApp</label>
+                    <input 
+                        type="tel" 
+                        id="whatsapp" 
+                        name="whatsapp" 
+                        placeholder="Contoh: 08123456789" 
+                        required
+                        minlength="10"
+                        maxlength="15"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat Pengiriman</label>
+                    <textarea 
+                        id="alamat" 
+                        name="alamat" 
+                        placeholder="Masukkan alamat pengiriman" 
+                        required
+                        rows="3"
+                    ></textarea>
+                </div>
+            </form>
+        </section>
+
+        <!-- Checkout Button -->
+        <section id="checkout-button">
+            <button type="button" id="btn-checkout" disabled>
+                Pesan via WhatsApp
+            </button>
+        </section>
+
+        <!-- Alamat Tempat Jualan -->
+        <section id="alamat-lokasi">
+            <h2>Alamat Kami</h2>
+            <p>Jl. Bukit Cinere 1</p>
+        </section>
+
+        <!-- Google Maps -->
+        <section id="google-maps">
+            <h2>Lokasi Kami</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1234567890123!2d106.7890123456789!3d-6.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMDcnMjQuNCJTIDEwNsKwNDcnMjAuNCJF!5e0!3m2!1sid!2sid!4v1234567890123!5m2!1sid!2sid" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Lokasi Nasi Bakar Mama Aura">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Nasi Bakar Mama Aura. All rights reserved.</p>
+        <p>Jl. Bukit Cinere 1</p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+/* ==========================================
+   MOBILE FIRST - DEFAULT STYLES (320px+)
+   ========================================== */
+
+/* Header / Navbar */
+header {
+    background-color: #d4451a;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Main Content */
+main {
+    padding: 1rem;
+    max-width: 100%;
+}
+
+/* Section Base */
+section {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+    font-size: 1.125rem;
+    color: #d4451a;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #d4451a;
+    font-weight: 600;
+}
+
+/* Jam Operasional */
+#jam-operasional p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+#jam-operasional p:last-child {
+    font-style: italic;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Menu Section */
+#menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    gap: 0.75rem;
+}
+
+.menu-item-image {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.menu-item-info {
+    flex: 1;
+}
+
+.menu-item-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.menu-item-price {
+    color: #d4451a;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.menu-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-quantity {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    background-color: #d4451a;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-quantity:hover {
+    background-color: #b33a15;
+}
+
+.btn-quantity:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.quantity-display {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Cart Section */
+#cart-empty {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    color: #666;
+    background-color: #fafafa;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+}
+
+#cart-empty p {
+    margin-bottom: 0.5rem;
+}
+
+#cart-empty p:first-child {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+#cart-empty p:last-child {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+#cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.cart-item-name {
+    flex: 1;
+}
+
+.cart-item-qty {
+    margin: 0 0.5rem;
+    color: #666;
+}
+
+.cart-item-price {
+    font-weight: 500;
+}
+
+#cart-total {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #d4451a;
+    text-align: right;
+}
+
+#cart-total p {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#total-harga {
+    color: #d4451a;
+    font-size: 1.25rem;
+}
+
+/* Form Checkout */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4451a;
+    box-shadow: 0 0 0 3px rgba(212, 69, 26, 0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+}
+
+/* Checkout Button */
+#checkout-button {
+    background-color: transparent;
+    padding: 0;
+    position: sticky;
+    bottom: 1rem;
+    z-index: 50;
+}
+
+#btn-checkout {
+    width: 100%;
+    padding: 1rem;
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+#btn-checkout:hover:not(:disabled) {
+    background-color: #1da851;
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+#btn-checkout:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+    color: #aaa;
+}
+
+/* Alamat Lokasi */
+#alamat-lokasi p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Google Maps */
+#google-maps .map-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#google-maps iframe {
+    display: block;
+    width: 100%;
+    min-height: 250px;
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET (576px+)
+   ========================================== */
+
+@media (min-width: 576px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+
+    section {
+        padding: 1.25rem;
+    }
+
+    section h2 {
+        font-size: 1.25rem;
+    }
+
+    .menu-item {
+        padding: 1rem;
+    }
+
+    .menu-item-image {
+        width: 72px;
+        height: 72px;
+    }
+
+    .menu-item-name {
+        font-size: 1rem;
+    }
+
+    .menu-item-price {
+        font-size: 1rem;
+    }
+
+    .btn-quantity {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    #cart-total p {
+        font-size: 1.2rem;
+    }
+
+    #total-harga {
+        font-size: 1.4rem;
+    }
+
+    .form-group input {
+        padding: 0.875rem;
+    }
+
+    .form-group textarea {
+        padding: 0.875rem;
+    }
+
+    #btn-checkout {
+        font-size: 1.1rem;
+        padding: 1.125rem;
+    }
+
+    #google-maps iframe {
+        min-height: 300px;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE - DESKTOP (768px+)
+   ========================================== */
+
+@media (min-width: 768px) {
+    header {
+        padding: 1.25rem 2rem;
+    }
+
+    header h1 {
+        font-size: 1.75rem;
+    }
+
+    main {
+        padding: 2rem;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    section h2 {
+        font-size: 1.375rem;
+    }
+
+    #jam-operasional p {
+        font-size: 1rem;
+    }
+
+    #jam-operasional p:last-child {
+        font-size: 0.9rem;
+    }
+
+    #menu-list {
+        gap: 1rem;
+    }
+
+    .menu-item {
+        padding: 1.25rem;
+    }
+
+    .menu-item-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .menu-item-name {
+        font-size: 1.05rem;
+    }
+
+    .menu-item-price {
+        font-size: 1.05rem;
+    }
+
+    .cart-item {
+        font-size: 1rem;
+    }
+
+    #cart-total p {
+        font-size: 1.3rem;
+    }
+
+    #total-harga {
+        font-size: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+    }
+
+    .form-group input {
+        padding: 1rem;
+    }
+
+    .form-group textarea {
+        padding: 1rem;
+    }
+
+    #btn-checkout {
+        font-size: 1.125rem;
+        padding: 1.25rem;
+    }
+
+    #alamat-lokasi p {
+        font-size: 1.1rem;
+    }
+
+    #google-maps iframe {
+        min-height: 350px;
+    }
+
+    footer {
+        padding: 2rem 1rem;
+        font-size: 0.9rem;
+    }
+}

@@ -9,42 +9,71 @@
     <meta property="og:title" content="Nasi Bakar Mama Aura">
     <meta property="og:description" content="Nasi bakar segar setiap pagi. Pesan sekarang via WhatsApp!">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/nasiBakar-ayamSuwir.jpg">
     <title>Nasi Bakar Mama Aura | Nasi Bakar Segar Cinere, Gandul, Limo</title>
     <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FoodEstablishment",
+        "name": "Nasi Bakar Mama Aura",
+        "description": "Nasi bakar segar setiap pagi dengan berbagai varian isian.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Pangkalan Jati Baru No. 58",
+            "addressLocality": "Cinere",
+            "addressRegion": "Depok",
+            "addressCountry": "ID"
+        },
+        "areaServed": ["Cinere", "Gandul", "Limo", "Pangkalan Jati"],
+        "openingHours": "Mo-Su 06:30-10:00",
+        "priceRange": "Rp 10.000 - Rp 13.000",
+        "telephone": "+6281310283191"
+    }
+    </script>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <header id="hero">
-        <nav>
+    <a href="#menu" class="skip-link">Langsung ke Menu</a>
+
+    <!-- Header -->
+    <header>
+        <nav class="header-nav">
             <h1>Nasi Bakar Mama Aura</h1>
+            <a href="https://wa.me/6281310283191?text=Halo%2C%20saya%20ingin%20pesan%20Nasi%20Bakar%20Mama%20Aura" class="header-cta" target="_blank" rel="noopener noreferrer">
+                Pesan via WhatsApp
+            </a>
         </nav>
-        <div class="hero-content">
-            <p class="hero-tagline">Segar Setiap Pagi</p>
-            <p class="hero-desc">Nasi bakar dengan isian ayam suwir, tongkol, cumi, dan teri. Dibuat setiap pagi dengan bahan segar pilihan.</p>
-            <div class="hero-info">
-                <span class="hero-badge">6 Menu</span>
-                <span class="hero-badge">Mulai Rp10.000</span>
-                <span class="hero-badge">06:30 - 10:00 WIB</span>
-            </div>
-            <p class="hero-stock">Stok terbatas setiap hari!</p>
-            <a href="#menu" class="hero-cta">Pesan Sekarang</a>
-        </div>
     </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <p class="hero-tagline">Nasi Bakar Hangat, Fresh Setiap Pagi</p>
+        <p class="hero-desc">Nasi bakar dengan isian ayam suwir, tongkol, cumi, dan teri. Dibuat setiap pagi dengan bahan segar pilihan.</p>
+        <div class="hero-info">
+            <span class="hero-badge">6 Menu</span>
+            <span class="hero-badge">Mulai Rp10.000</span>
+            <span class="hero-badge">06:30 - 10:00 WIB</span>
+        </div>
+        <p class="hero-stock">Stok terbatas setiap hari!</p>
+        <a href="https://wa.me/6281310283191?text=Halo%2C%20saya%20ingin%20pesan%20Nasi%20Bakar%20Mama%20Aura" class="hero-cta" target="_blank" rel="noopener noreferrer">
+            Pesan via WhatsApp
+        </a>
+    </section>
 
     <main>
 
-        <!-- Menu Produk -->
-        <section id="menu">
-            <h2>Menu Kami</h2>
-            <div id="menu-list">
-                <!-- Menu items akan dirender oleh JavaScript -->
-            </div>
+        <!-- Tentang Mama Aura -->
+        <section id="tentang">
+            <h2>Tentang Mama Aura</h2>
+            <p>Nasi Bakar Mama Aura adalah usaha kuliner rumahan yang berlokasi di Cinere. Kami mulai berjualan sejak tahun 2020 dengan satu tujuan: menyediakan nasi bakar enak, segar, dan terjangkau untuk warga sekitar.</p>
+            <p>Setiap nasi bakar dibuat dengan penuh cinta menggunakan bahan-bahan segar pilihan. Dari ayam suwir, tongkol, cumi, hingga teri, semuanya dimasak dengan bumbu khas yang bikin nagih.</p>
         </section>
 
-        <!-- Trust Building: Kenapa Memilih Mama Aura -->
-        <section id="kenapa-memilih">
-            <h2>Kenapa Memilih Mama Aura?</h2>
+        <!-- Keunggulan Kami -->
+        <section id="keunggulan">
+            <h2>Keunggulan Kami</h2>
             <div class="trust-grid">
                 <div class="trust-item">
                     <span class="trust-icon">🍳</span>
@@ -64,89 +93,81 @@
             </div>
         </section>
 
-        <!-- Trust Building: Tentang Mama Aura -->
-        <section id="tentang">
-            <h2>Tentang Mama Aura</h2>
-            <p>Nasi Bakar Mama Aura adalah usaha rumahan yang berlokasi di Cinere. Kami mulai berjualan sejak tahun 2020 dengan satu tujuan: menyediakan nasi bakar enak, segar, dan terjangkau untuk warga sekitar.</p>
-            <p>Setiap nasi bakar dibuat dengan penuh cinta menggunakan bahan-bahan segar pilihan. Dari ayam suwir, tongkol, cumi, hingga teri, semuanya dimasak dengan bumbu khas yang bikin nagih.</p>
-        </section>
-
-        <!-- Shopping Cart -->
-        <section id="keranjang">
-            <h2>Keranjang Belanja</h2>
-            <div id="cart-list">
-                <!-- Cart items akan dirender oleh JavaScript -->
-            </div>
-            <div id="cart-empty">
-                <p>Belum ada pesanan.</p>
-                <p>Silakan pilih menu terlebih dahulu.</p>
-            </div>
-            <div id="cart-total">
-                <p>Total: <span id="total-harga">Rp 0</span></p>
+        <!-- Menu Kami -->
+        <section id="menu">
+            <h2>Menu Kami</h2>
+            <div id="menu-list">
+                <!-- Menu items dirender oleh JavaScript dari data.js -->
             </div>
         </section>
 
-        <!-- Form Checkout -->
-        <section id="checkout-form">
-            <h2>Informasi Pemesanan</h2>
-            <form id="form-pemesanan">
-                <div class="form-group">
-                    <label for="nama">Nama</label>
-                    <input 
-                        type="text" 
-                        id="nama" 
-                        name="nama" 
-                        placeholder="Masukkan nama Anda" 
-                        required
-                        minlength="3"
-                    >
-                </div>
-                <div class="form-group">
-                    <label for="whatsapp">Nomor WhatsApp</label>
-                    <input 
-                        type="tel" 
-                        id="whatsapp" 
-                        name="whatsapp" 
-                        placeholder="Contoh: 08123456789" 
-                        required
-                        minlength="10"
-                        maxlength="15"
-                    >
-                </div>
-            </form>
+        <!-- Cara Pemesanan -->
+        <section id="cara-pesan">
+            <h2>Cara Pemesanan</h2>
+            <ol class="steps-list">
+                <li>
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <strong>Pilih Menu</strong>
+                        <p>Lihat daftar menu dan pilih nasi bakar yang diinginkan.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <strong>Klik "Pesan"</strong>
+                        <p>Tekan tombol pesan pada menu pilihan Anda.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <strong>Kirim via WhatsApp</strong>
+                        <p>Konfirmasi pesanan Anda melalui chat WhatsApp.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-number">4</span>
+                    <div class="step-content">
+                        <strong>Terima Pesanan</strong>
+                        <p>Nasi bakar segar siap diantar atau diambil.</p>
+                    </div>
+                </li>
+            </ol>
         </section>
 
-        <!-- Checkout Button -->
-        <section id="checkout-button">
-            <button type="button" id="btn-checkout" disabled>
-                Pesan via WhatsApp
-            </button>
+        <!-- Jam Operasional -->
+        <section id="jam-operasional">
+            <h2>Jam Operasional</h2>
+            <div class="hours-info">
+                <p class="hours-time">🕐 06:30 - 10:00 WIB</p>
+                <p class="hours-note">Pesanan di luar jam operasional akan diproses hari berikutnya.</p>
+                <p class="hours-note">Produk dibuat dalam jumlah terbatas setiap harinya untuk menjaga kualitas.</p>
+            </div>
         </section>
 
-        <!-- Trust Building: Informasi Lokasi -->
+        <!-- Lokasi Kami -->
         <section id="lokasi">
             <h2>Lokasi Kami</h2>
-            <p class="lokasi-alamat">📍 Jl. Bukit Cinere 1</p>
-            <p class="lokasi-jam">🕐 Jam Operasional: 06:30 - 10:00 WIB</p>
-            <p class="lokasi-catatan">Pesanan di luar jam operasional akan diproses hari berikutnya.</p>
-            <a 
-                href="https://www.google.com/maps/search/?api=1&query=Jl.+Bukit+Cinere+1" 
-                target="_blank" 
+            <p class="lokasi-alamat">📍 Jl. Pangkalan Jati Baru No. 58, Cinere, Depok</p>
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=Jl.+Pangkalan+Jati+Baru+No.+58+Cinere+Depok"
+                target="_blank"
                 rel="noopener noreferrer"
                 class="map-link"
                 title="Buka di Google Maps">
                 <div class="map-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                         <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     <p>Klik untuk buka di Google Maps</p>
-                    <span>Jl. Bukit Cinere 1</span>
+                    <span>Jl. Pangkalan Jati Baru No. 58</span>
                 </div>
             </a>
         </section>
 
-        <!-- Trust Building: Informasi Area Pelayanan (Local SEO) -->
+        <!-- Area Pelayanan -->
         <section id="area-pelayanan">
             <h2>Area Pelayanan Kami</h2>
             <p>Kami melayani pengiriman nasi bakar segar ke area sekitar Cinere dan sekitarnya:</p>
@@ -156,7 +177,43 @@
                 <li>📍 <strong>Limo</strong> - Siap antar</li>
                 <li>📍 <strong>Pangkalan Jati</strong> - Siap antar</li>
             </ul>
-            <p class="area-note">Untuk area di luar daftar di atas, silakan hubungi kami terlebih dahulu untuk mengecek ketersediaan pengiriman.</p>
+            <p class="area-note">Untuk area di luar daftar di atas, silakan hubungi kami terlebih dahulu.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <h2>Pertanyaan Umum</h2>
+            <div class="faq-list">
+                <details>
+                    <summary>Berapa harga nasi bakar?</summary>
+                    <p>Harga mulai dari Rp 10.000 untuk varian ayam suwir, tongkol, ayam jamur suwir, dan ati ampela. Untuk varian cumi dan teri, harganya Rp 13.000.</p>
+                </details>
+                <details>
+                    <summary>Jam berapa bisa pesan?</summary>
+                    <p>Kami beroperasi setiap hari dari pukul 06:30 hingga 10:00 WIB. Pesanan di luar jam operasional akan diproses hari berikutnya.</p>
+                </details>
+                <details>
+                    <summary>Bagaimana cara pesan?</summary>
+                    <p>Cukup pilih menu yang diinginkan, klik tombol "Pesan via WhatsApp", lalu konfirmasi pesanan Anda melalui chat.</p>
+                </details>
+                <details>
+                    <summary>Apakah bisa pengiriman?</summary>
+                    <p>Ya, kami melayani pengiriman ke area Cinere, Gandul, Limo, dan Pangkalan Jati. Silakan hubungi kami untuk detail pengiriman.</p>
+                </details>
+                <details>
+                    <summary>Apakah stok setiap hari terbatas?</summary>
+                    <p>Ya, nasi bakar dibuat dalam jumlah terbatas setiap harinya untuk menjaga kesegaran dan kualitas rasa.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="cta-final" class="cta-final">
+            <h2>Siap Pesan Nasi Bakar?</h2>
+            <p>Pesan sekarang dan nikmati nasi bakar segar hangat langsung dari dapur kami!</p>
+            <a href="https://wa.me/6281310283191?text=Halo%2C%20saya%20ingin%20pesan%20Nasi%20Bakar%20Mama%20Aura" class="cta-final-btn" target="_blank" rel="noopener noreferrer">
+                Pesan via WhatsApp
+            </a>
         </section>
 
     </main>
@@ -164,10 +221,10 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Nasi Bakar Mama Aura. All rights reserved.</p>
-        <p>Jl. Bukit Cinere 1 | Cinere, Depok</p>
+        <p>Jl. Pangkalan Jati Baru No. 58 | Cinere, Depok</p>
     </footer>
 
     <script src="data.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 </body>
 </html>

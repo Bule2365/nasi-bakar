@@ -1,7 +1,7 @@
 # Checkout System Analysis - Nasi Bakar Mama Aura
 
-> Analisa sistem checkout: cart, localStorage, WhatsApp integration, dan user flow.
-> Dibuat: 21 Juli 2026
+> Analisa sistem checkout: cart, localStorage, WhatsApp integration, dan user
+> flow. Dibuat: 21 Juli 2026
 
 ---
 
@@ -37,15 +37,15 @@ User Action → State Update → View Update → Persistence → Checkout
 
 ### Components
 
-| Component | File | Responsibility |
-|-----------|------|----------------|
-| State | app.js (line 6) | `cart = []` array |
-| Operations | app.js (188-236) | add, decrease, remove |
+| Component    | File             | Responsibility           |
+| ------------ | ---------------- | ------------------------ |
+| State        | app.js (line 6)  | `cart = []` array        |
+| Operations   | app.js (188-236) | add, decrease, remove    |
 | Calculations | app.js (242-252) | total items, total price |
-| Rendering | app.js (154-293) | menu + cart DOM |
-| Validation | app.js (54-91) | name, phone, cart |
-| Checkout | app.js (127-148) | WhatsApp redirect |
-| Persistence | app.js (14-35) | localStorage save/load |
+| Rendering    | app.js (154-293) | menu + cart DOM          |
+| Validation   | app.js (54-91)   | name, phone, cart        |
+| Checkout     | app.js (127-148) | WhatsApp redirect        |
+| Persistence  | app.js (14-35)   | localStorage save/load   |
 
 ### Data Flow
 
@@ -79,13 +79,13 @@ let cart = [];
 
 ### Cart Operations
 
-| Operation | Function | Lines | Behavior |
-|-----------|----------|-------|----------|
-| Add | `addToCart(menuId)` | 188-211 | Find menu item, increment or push |
-| Decrease | `decreaseFromCart(menuId)` | 213-228 | Decrement or remove if qty=1 |
-| Remove | `removeFromCart(menuId)` | 230-236 | Filter out item |
-| Calculate items | `calculateTotalItems()` | 242-246 | Sum all quantities |
-| Calculate price | `calculateTotalPrice()` | 248-252 | Sum all (price * quantity) |
+| Operation       | Function                   | Lines   | Behavior                          |
+| --------------- | -------------------------- | ------- | --------------------------------- |
+| Add             | `addToCart(menuId)`        | 188-211 | Find menu item, increment or push |
+| Decrease        | `decreaseFromCart(menuId)` | 213-228 | Decrement or remove if qty=1      |
+| Remove          | `removeFromCart(menuId)`   | 230-236 | Filter out item                   |
+| Calculate items | `calculateTotalItems()`    | 242-246 | Sum all quantities                |
+| Calculate price | `calculateTotalPrice()`    | 248-252 | Sum all (price \* quantity)       |
 
 ### Cart Issues
 
@@ -93,63 +93,71 @@ let cart = [];
 
 **Severity: LOW**
 
-Each cart item stores `name` and `price` from MENU_DATA. If menu prices change, existing cart items retain old prices.
+Each cart item stores `name` and `price` from MENU_DATA. If menu prices change,
+existing cart items retain old prices.
 
 ```javascript
 // Current: cart item stores price
 cart.push({
-    id: menu.id,
-    name: menu.name,    // ← duplicated
-    price: menu.price,  // ← duplicated
-    quantity: 1
+  id: menu.id,
+  name: menu.name, // ← duplicated
+  price: menu.price, // ← duplicated
+  quantity: 1,
 });
 ```
 
-**Impact:** If you update prices in data.js, users with items in cart from before the change will still see old prices.
+**Impact:** If you update prices in data.js, users with items in cart from
+before the change will still see old prices.
 
-**Solution:** Store only `id` and `quantity` in cart. Look up `name` and `price` from MENU_DATA when rendering.
+**Solution:** Store only `id` and `quantity` in cart. Look up `name` and `price`
+from MENU_DATA when rendering.
 
 ```javascript
 // Proposed: cart item only stores reference + quantity
 cart.push({
-    id: menu.id,
-    quantity: 1
+  id: menu.id,
+  quantity: 1,
 });
 
 // When rendering:
-var menuItem = MENU_DATA.find(function(m) { return m.id === item.id; });
+var menuItem = MENU_DATA.find(function (m) {
+  return m.id === item.id;
+});
 // Use menuItem.name and menuItem.price
 ```
 
-**Trade-off:**
-| Approach | Pros | Cons |
-|----------|------|------|
-| Current (store name+price) | Cart renders independently of MENU_DATA | Price/name staleness |
-| Proposed (store id only) | Always fresh data from MENU_DATA | Cart depends on MENU_DATA existing |
+**Trade-off:** | Approach | Pros | Cons | |----------|------|------| | Current
+(store name+price) | Cart renders independently of MENU_DATA | Price/name
+staleness | | Proposed (store id only) | Always fresh data from MENU_DATA | Cart
+depends on MENU_DATA existing |
 
-**Recommendation:** Keep current approach for simplicity. The price/name staleness is unlikely to be a real problem for a small UMKM.
+**Recommendation:** Keep current approach for simplicity. The price/name
+staleness is unlikely to be a real problem for a small UMKM.
 
 #### Issue 2: No Quantity Limit
 
 **Severity: MEDIUM**
 
-Users can increase quantity without any upper bound. Clicking "+" 100 times creates quantity=100.
+Users can increase quantity without any upper bound. Clicking "+" 100 times
+creates quantity=100.
 
 **Impact:**
+
 - Accidental large orders
 - WhatsApp message becomes very long
 - Confusing for business owner
 
 **Solution:**
+
 ```javascript
 var MAX_QUANTITY = 10;
 
 function addToCart(menuId) {
-    // ... existing code
-    if (existingItem.quantity < MAX_QUANTITY) {
-        existingItem.quantity += 1;
-    }
-    // ...
+  // ... existing code
+  if (existingItem.quantity < MAX_QUANTITY) {
+    existingItem.quantity += 1;
+  }
+  // ...
 }
 ```
 
@@ -163,8 +171,8 @@ Users must remove items one by one. No "Clear All" button.
 
 ```javascript
 function clearCart() {
-    cart = [];
-    updateView();
+  cart = [];
+  updateView();
 }
 ```
 
@@ -175,43 +183,43 @@ function clearCart() {
 ### Current Implementation
 
 ```javascript
-var STORAGE_KEY = 'nasiBakarCart';
+var STORAGE_KEY = "nasiBakarCart";
 
 function saveCartToLocalStorage() {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
-    } catch (e) {
-        console.error('Gagal menyimpan cart:', e);
-    }
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+  } catch (e) {
+    console.error("Gagal menyimpan cart:", e);
+  }
 }
 
 function loadCartFromLocalStorage() {
-    try {
-        var stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            var parsed = JSON.parse(stored);
-            if (Array.isArray(parsed)) {
-                cart = parsed;
-            }
-        }
-    } catch (e) {
-        console.error('Gagal memuat cart:', e);
-        cart = [];
+  try {
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      var parsed = JSON.parse(stored);
+      if (Array.isArray(parsed)) {
+        cart = parsed;
+      }
     }
+  } catch (e) {
+    console.error("Gagal memuat cart:", e);
+    cart = [];
+  }
 }
 ```
 
 ### Assessment
 
-| Aspect | Status | Detail |
-|--------|--------|--------|
-| Save | PASS | try/catch + JSON.stringify |
-| Load | PASS | try/catch + JSON.parse + Array.isArray |
-| Error handling | PARTIAL | Console error only, no user feedback |
-| Schema validation | TIDAK ADA | Doesn't validate item structure |
-| Size limit | TIDAK ADA | QuotaExceededError caught but silent |
-| Cross-tab | TIDAK ADA | No storage event listener |
-| Data staleness | TIDAK ADA | Old prices persist |
+| Aspect            | Status    | Detail                                 |
+| ----------------- | --------- | -------------------------------------- |
+| Save              | PASS      | try/catch + JSON.stringify             |
+| Load              | PASS      | try/catch + JSON.parse + Array.isArray |
+| Error handling    | PARTIAL   | Console error only, no user feedback   |
+| Schema validation | TIDAK ADA | Doesn't validate item structure        |
+| Size limit        | TIDAK ADA | QuotaExceededError caught but silent   |
+| Cross-tab         | TIDAK ADA | No storage event listener              |
+| Data staleness    | TIDAK ADA | Old prices persist                     |
 
 ### Local Storage Issues
 
@@ -219,25 +227,27 @@ function loadCartFromLocalStorage() {
 
 **Severity: MEDIUM**
 
-If localStorage is full (QuotaExceededError), the catch block logs to console but provides no user feedback. Cart appears to save but doesn't persist.
+If localStorage is full (QuotaExceededError), the catch block logs to console
+but provides no user feedback. Cart appears to save but doesn't persist.
 
 **Impact:** User thinks cart is saved, refreshes page, cart is empty.
 
 **Solution:**
+
 ```javascript
 function saveCartToLocalStorage() {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
-    } catch (e) {
-        console.error('Gagal menyimpan cart:', e);
-        // Show subtle warning to user
-        showStorageWarning();
-    }
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+  } catch (e) {
+    console.error("Gagal menyimpan cart:", e);
+    // Show subtle warning to user
+    showStorageWarning();
+  }
 }
 
 function showStorageWarning() {
-    // Optional: show a small toast/banner
-    // For simplicity, could use a CSS class toggle on an existing element
+  // Optional: show a small toast/banner
+  // For simplicity, could use a CSS class toggle on an existing element
 }
 ```
 
@@ -245,32 +255,36 @@ function showStorageWarning() {
 
 **Severity: LOW**
 
-If someone manually edits localStorage (DevTools, or a bug corrupts data), the loaded cart might have invalid items.
+If someone manually edits localStorage (DevTools, or a bug corrupts data), the
+loaded cart might have invalid items.
 
 **Solution:**
+
 ```javascript
 function isValidCartItem(item) {
-    return item && 
-           typeof item.id === 'string' && 
-           typeof item.name === 'string' && 
-           typeof item.price === 'number' && 
-           typeof item.quantity === 'number' &&
-           item.quantity > 0;
+  return (
+    item &&
+    typeof item.id === "string" &&
+    typeof item.name === "string" &&
+    typeof item.price === "number" &&
+    typeof item.quantity === "number" &&
+    item.quantity > 0
+  );
 }
 
 function loadCartFromLocalStorage() {
-    try {
-        var stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            var parsed = JSON.parse(stored);
-            if (Array.isArray(parsed) && parsed.every(isValidCartItem)) {
-                cart = parsed;
-            }
-        }
-    } catch (e) {
-        console.error('Gagal memuat cart:', e);
-        cart = [];
+  try {
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      var parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.every(isValidCartItem)) {
+        cart = parsed;
+      }
     }
+  } catch (e) {
+    console.error("Gagal memuat cart:", e);
+    cart = [];
+  }
 }
 ```
 
@@ -278,16 +292,18 @@ function loadCartFromLocalStorage() {
 
 **Severity: LOW**
 
-If user opens website in two tabs, changes in one tab don't reflect in the other until reload.
+If user opens website in two tabs, changes in one tab don't reflect in the other
+until reload.
 
 **Solution:**
+
 ```javascript
-window.addEventListener('storage', function(e) {
-    if (e.key === STORAGE_KEY) {
-        loadCartFromLocalStorage();
-        renderCart();
-        renderMenu();
-    }
+window.addEventListener("storage", function (e) {
+  if (e.key === STORAGE_KEY) {
+    loadCartFromLocalStorage();
+    renderCart();
+    renderMenu();
+  }
 });
 ```
 
@@ -364,7 +380,7 @@ Total Item: 3
 Total Harga: *Rp 30.000*
 
 *Jam Operasional:*
-Pesanan di luar jam operasional (06:30 AM - 10:00 AM WIB) 
+Pesanan di luar jam operasional (06:30 AM - 10:00 AM WIB)
 akan diproses pada hari berikutnya.
 
 Terima kasih.
@@ -372,16 +388,16 @@ Terima kasih.
 
 ### Message Assessment
 
-| Aspect | Status | Detail |
-|--------|--------|--------|
-| Format | PASS | Clear, structured |
-| Bold markers | PASS | WhatsApp markdown (*bold*) |
-| Currency format | PASS | toLocaleString('id-ID') = "Rp 10.000" |
-| User data | PASS | Name + phone included |
-| Item details | PASS | Name, qty, price, subtotal |
-| Total | PASS | Bold formatted |
-| Operating hours notice | PASS | Helpful info |
-| Language | PASS | Indonesian, friendly |
+| Aspect                 | Status | Detail                                |
+| ---------------------- | ------ | ------------------------------------- |
+| Format                 | PASS   | Clear, structured                     |
+| Bold markers           | PASS   | WhatsApp markdown (_bold_)            |
+| Currency format        | PASS   | toLocaleString('id-ID') = "Rp 10.000" |
+| User data              | PASS   | Name + phone included                 |
+| Item details           | PASS   | Name, qty, price, subtotal            |
+| Total                  | PASS   | Bold formatted                        |
+| Operating hours notice | PASS   | Helpful info                          |
+| Language               | PASS   | Indonesian, friendly                  |
 
 ### WhatsApp Issues
 
@@ -394,12 +410,13 @@ Terima kasih.
 BUSINESS_DATA.whatsappNumber = "+62 813-1028-3191";
 
 // app.js
-var WHATSAPP_NUMBER = '6281310283191';
+var WHATSAPP_NUMBER = "6281310283191";
 ```
 
 Same number, different formats, two locations. Must be kept in sync manually.
 
 **Solution:** Use single source of truth.
+
 ```javascript
 // app.js
 var WHATSAPP_NUMBER = CONFIG.WHATSAPP_NUMBER;
@@ -411,24 +428,30 @@ var WHATSAPP_NUMBER = CONFIG.WHATSAPP_NUMBER;
 **Severity: MEDIUM**
 
 ```javascript
-window.open(whatsappUrl, '_blank');
+window.open(whatsappUrl, "_blank");
 ```
 
 If browser blocks popup, user gets nothing. No error, no fallback.
 
 **Solution:**
+
 ```javascript
 function redirectToWhatsApp() {
-    var message = generateWhatsAppMessage();
-    var encodedMessage = encodeURIComponent(message);
-    var whatsappUrl = 'https://wa.me/' + CONFIG.WHATSAPP_NUMBER + '?text=' + encodedMessage;
-    
-    var newWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    
-    // Fallback if popup blocked
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-        window.location.href = whatsappUrl;
-    }
+  var message = generateWhatsAppMessage();
+  var encodedMessage = encodeURIComponent(message);
+  var whatsappUrl =
+    "https://wa.me/" + CONFIG.WHATSAPP_NUMBER + "?text=" + encodedMessage;
+
+  var newWindow = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
+  // Fallback if popup blocked
+  if (
+    !newWindow ||
+    newWindow.closed ||
+    typeof newWindow.closed === "undefined"
+  ) {
+    window.location.href = whatsappUrl;
+  }
 }
 ```
 
@@ -437,45 +460,53 @@ function redirectToWhatsApp() {
 **Severity: LOW**
 
 ```javascript
-window.open(whatsappUrl, '_blank');  // Missing third argument
+window.open(whatsappUrl, "_blank"); // Missing third argument
 ```
 
-The opened page could access `window.opener`. While wa.me is trusted, it's a security best practice.
+The opened page could access `window.opener`. While wa.me is trusted, it's a
+security best practice.
 
 **Solution:**
+
 ```javascript
-window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 ```
 
 #### Issue 4: Cart Not Cleared After Checkout
 
 **Severity: LOW**
 
-After successful WhatsApp redirect, the cart remains in localStorage. User could accidentally submit twice.
+After successful WhatsApp redirect, the cart remains in localStorage. User could
+accidentally submit twice.
 
 **Decision:** This might be INTENTIONAL. Some users might want to:
+
 1. Check the WhatsApp message
 2. Go back and modify the order
 3. Submit again
 
-**Recommendation:** Keep current behavior but add a note in the confirm dialog: "Setelah checkout, keranjang akan tetap berisi pesanan Anda."
+**Recommendation:** Keep current behavior but add a note in the confirm dialog:
+"Setelah checkout, keranjang akan tetap berisi pesanan Anda."
 
 #### Issue 5: No Input Sanitization
 
 **Severity: LOW**
 
 User's name is inserted directly into the WhatsApp message:
+
 ```javascript
-message += 'Nama: ' + nama + '\n';
+message += "Nama: " + nama + "\n";
 ```
 
-If name contains WhatsApp markdown markers (`*`, `_`, `~`), the message formatting breaks.
+If name contains WhatsApp markdown markers (`*`, `_`, `~`), the message
+formatting breaks.
 
 **Solution:**
+
 ```javascript
 function sanitizeForWhatsApp(text) {
-    // Remove or escape WhatsApp markdown characters
-    return text.replace(/[*_~]/g, '');
+  // Remove or escape WhatsApp markdown characters
+  return text.replace(/[*_~]/g, "");
 }
 ```
 
@@ -485,11 +516,11 @@ function sanitizeForWhatsApp(text) {
 
 ### Current Validation Rules
 
-| Field | Rule | Visual Feedback |
-|-------|------|-----------------|
-| Name | trimmed.length >= 3 | Green border (valid), Red border (invalid) |
+| Field | Rule                       | Visual Feedback                            |
+| ----- | -------------------------- | ------------------------------------------ |
+| Name  | trimmed.length >= 3        | Green border (valid), Red border (invalid) |
 | Phone | 10-15 chars after cleaning | Green border (valid), Red border (invalid) |
-| Cart | cart.length > 0 | Button disabled |
+| Cart  | cart.length > 0            | Button disabled                            |
 
 ### Validation Flow
 
@@ -517,12 +548,14 @@ checkoutBtnEl.disabled = !isValid
 User only sees red/green border. No text explaining what's wrong.
 
 **Current UX:**
+
 ```
 [ RED BORDER INPUT ]
 (User sees: "Why is this red?")
 ```
 
 **Better UX:**
+
 ```
 [ RED BORDER INPUT ]
 Nama harus minimal 3 karakter
@@ -530,28 +563,29 @@ Nama harus minimal 3 karakter
 ```
 
 **Solution:**
+
 ```html
 <div class="form-group">
-    <label for="nama">Nama</label>
-    <input type="text" id="nama" ...>
-    <span class="error-message" id="nama-error"></span>
+  <label for="nama">Nama</label>
+  <input type="text" id="nama" ... />
+  <span class="error-message" id="nama-error"></span>
 </div>
 ```
 
 ```javascript
 function validateName(name) {
-    var isValid = name.trim().length >= 3;
-    namaInputEl.classList.toggle('error', !isValid && name.length > 0);
-    namaInputEl.classList.toggle('success', isValid);
-    
-    var errorEl = document.getElementById('nama-error');
-    if (!isValid && name.length > 0) {
-        errorEl.textContent = 'Nama harus minimal 3 karakter';
-    } else {
-        errorEl.textContent = '';
-    }
-    
-    return isValid;
+  var isValid = name.trim().length >= 3;
+  namaInputEl.classList.toggle("error", !isValid && name.length > 0);
+  namaInputEl.classList.toggle("success", isValid);
+
+  var errorEl = document.getElementById("nama-error");
+  if (!isValid && name.length > 0) {
+    errorEl.textContent = "Nama harus minimal 3 karakter";
+  } else {
+    errorEl.textContent = "";
+  }
+
+  return isValid;
 }
 ```
 
@@ -561,24 +595,26 @@ function validateName(name) {
 
 ```javascript
 function cleanPhoneNumber(phone) {
-    return phone.replace(/[\+\-\s\(\)]/g, '');
+  return phone.replace(/[\+\-\s\(\)]/g, "");
 }
 
 function validateWhatsApp(phone) {
-    var cleaned = cleanPhoneNumber(phone);
-    var isValid = cleaned.length >= 10 && cleaned.length <= 15;
-    // ...
+  var cleaned = cleanPhoneNumber(phone);
+  var isValid = cleaned.length >= 10 && cleaned.length <= 15;
+  // ...
 }
 ```
 
 "abcdefghij" (10 letters) passes validation. Only checks length, not digits.
 
 **Solution:**
+
 ```javascript
 function validateWhatsApp(phone) {
-    var cleaned = cleanPhoneNumber(phone);
-    var isValid = /^\d+$/.test(cleaned) && cleaned.length >= 10 && cleaned.length <= 15;
-    // ...
+  var cleaned = cleanPhoneNumber(phone);
+  var isValid =
+    /^\d+$/.test(cleaned) && cleaned.length >= 10 && cleaned.length <= 15;
+  // ...
 }
 ```
 
@@ -586,22 +622,24 @@ function validateWhatsApp(phone) {
 
 **Severity: LOW**
 
-Every keystroke triggers full validation of all fields. User typing in name field also validates phone field.
+Every keystroke triggers full validation of all fields. User typing in name
+field also validates phone field.
 
-**Impact:** Visual noise (phone field might flash error while user hasn't touched it yet).
+**Impact:** Visual noise (phone field might flash error while user hasn't
+touched it yet).
 
 **Solution:** Validate only the field being typed in, or debounce validation.
 
 ```javascript
 // Validate only the active field
-namaInputEl.addEventListener('input', function() {
-    validateName(this.value);
-    updateCheckoutButtonState();
+namaInputEl.addEventListener("input", function () {
+  validateName(this.value);
+  updateCheckoutButtonState();
 });
 
-whatsappInputEl.addEventListener('input', function() {
-    validateWhatsApp(this.value);
-    updateCheckoutButtonState();
+whatsappInputEl.addEventListener("input", function () {
+  validateWhatsApp(this.value);
+  updateCheckoutButtonState();
 });
 ```
 
@@ -612,13 +650,13 @@ whatsappInputEl.addEventListener('input', function() {
 ```css
 /* Error has box-shadow */
 .form-group input.error {
-    border-color: #e74c3c;
-    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
 }
 
 /* Success has NO box-shadow */
 .form-group input.success {
-    border-color: #27ae60;
+  border-color: #27ae60;
 }
 ```
 
@@ -630,21 +668,22 @@ whatsappInputEl.addEventListener('input', function() {
 
 ### Error Scenarios
 
-| Scenario | Current Handling | User Feedback | Improvement |
-|----------|-----------------|---------------|-------------|
-| Name too short | Red border | Visual only | Add error message |
-| Phone invalid | Red border | Visual only | Add error message |
-| Cart empty | Button disabled | Visual only | Add message |
-| localStorage full | console.error | NONE | Add warning |
-| localStorage corrupt | Reset to [] | Silent | Add notification |
-| WhatsApp popup blocked | NONE | NONE | Add fallback |
-| WhatsApp not installed | Opens wa.me web | NONE | Show message |
-| Invalid menu ID | Silent return | NONE | Log warning |
-| Network error (wa.me) | NONE | NONE | N/A (static site) |
+| Scenario               | Current Handling | User Feedback | Improvement       |
+| ---------------------- | ---------------- | ------------- | ----------------- |
+| Name too short         | Red border       | Visual only   | Add error message |
+| Phone invalid          | Red border       | Visual only   | Add error message |
+| Cart empty             | Button disabled  | Visual only   | Add message       |
+| localStorage full      | console.error    | NONE          | Add warning       |
+| localStorage corrupt   | Reset to []      | Silent        | Add notification  |
+| WhatsApp popup blocked | NONE             | NONE          | Add fallback      |
+| WhatsApp not installed | Opens wa.me web  | NONE          | Show message      |
+| Invalid menu ID        | Silent return    | NONE          | Log warning       |
+| Network error (wa.me)  | NONE             | NONE          | N/A (static site) |
 
 ### Error Handling Score: 4/10
 
-The error handling is minimal. Most errors are either silent or only visual (red border). No text feedback, no fallbacks, no user-friendly messages.
+The error handling is minimal. Most errors are either silent or only visual (red
+border). No text feedback, no fallbacks, no user-friendly messages.
 
 ---
 
@@ -684,13 +723,13 @@ The error handling is minimal. Most errors are either silent or only visual (red
 
 ### Flow Issues
 
-| Step | Issue | Severity | Impact |
-|------|-------|----------|--------|
-| 5→6 | No visual feedback when adding to cart | MEDIUM | User unsure if item was added |
-| 6→7 | Cart section requires scrolling | MEDIUM | Disrupts checkout flow |
-| 7→8 | No order summary visible during checkout | HIGH | User can't review before submitting |
-| 12 | confirm() dialog is blocking/ugly | LOW | Poor UX but functional |
-| 14 | No post-checkout feedback | LOW | User unsure if order went through |
+| Step | Issue                                    | Severity | Impact                              |
+| ---- | ---------------------------------------- | -------- | ----------------------------------- |
+| 5→6  | No visual feedback when adding to cart   | MEDIUM   | User unsure if item was added       |
+| 6→7  | Cart section requires scrolling          | MEDIUM   | Disrupts checkout flow              |
+| 7→8  | No order summary visible during checkout | HIGH     | User can't review before submitting |
+| 12   | confirm() dialog is blocking/ugly        | LOW      | Poor UX but functional              |
+| 14   | No post-checkout feedback                | LOW      | User unsure if order went through   |
 
 ### Ideal User Flow (Proposed)
 
@@ -741,15 +780,15 @@ Stage 9: Order Confirmed (via WhatsApp reply)
 
 ### Conversion Barriers
 
-| Barrier | Stage | Severity | Solution |
-|---------|-------|----------|----------|
-| Slow image loading | 1→2 | HIGH | Optimize images |
-| No social proof | 2→3 | MEDIUM | Add testimonials |
-| Cart requires scrolling | 3→4 | MEDIUM | Combine cart + form |
-| No order summary | 4→5 | HIGH | Add visible summary |
-| confirm() dialog | 5→6 | LOW | Custom modal (optional) |
-| WhatsApp dependency | 6→7 | LOW | Target audience uses WA |
-| No post-checkout | 7→8 | LOW | Add confirmation message |
+| Barrier                 | Stage | Severity | Solution                 |
+| ----------------------- | ----- | -------- | ------------------------ |
+| Slow image loading      | 1→2   | HIGH     | Optimize images          |
+| No social proof         | 2→3   | MEDIUM   | Add testimonials         |
+| Cart requires scrolling | 3→4   | MEDIUM   | Combine cart + form      |
+| No order summary        | 4→5   | HIGH     | Add visible summary      |
+| confirm() dialog        | 5→6   | LOW      | Custom modal (optional)  |
+| WhatsApp dependency     | 6→7   | LOW      | Target audience uses WA  |
+| No post-checkout        | 7→8   | LOW      | Add confirmation message |
 
 ### Conversion Optimization
 
@@ -767,12 +806,13 @@ Stage 9: Order Confirmed (via WhatsApp reply)
 
 ```html
 <div id="cart-empty">
-    <p>Belum ada pesanan.</p>
-    <p>Silakan pilih menu terlebih dahulu.</p>
+  <p>Belum ada pesanan.</p>
+  <p>Silakan pilih menu terlebih dahulu.</p>
 </div>
 ```
 
 **Styling:**
+
 - Centered text
 - Dashed border
 - Light background (#fafafa)
@@ -780,21 +820,22 @@ Stage 9: Order Confirmed (via WhatsApp reply)
 
 ### Assessment
 
-| Aspect | Status | Detail |
-|--------|--------|--------|
-| Message clarity | GOOD | Clear "no orders yet" message |
-| Visual design | GOOD | Dashed border indicates emptiness |
-| CTA | MISSING | No link to scroll to menu |
-| Checkout button | DISABLED | Prevents empty checkout |
+| Aspect          | Status   | Detail                            |
+| --------------- | -------- | --------------------------------- |
+| Message clarity | GOOD     | Clear "no orders yet" message     |
+| Visual design   | GOOD     | Dashed border indicates emptiness |
+| CTA             | MISSING  | No link to scroll to menu         |
+| Checkout button | DISABLED | Prevents empty checkout           |
 
 ### Improvement
 
 Add a CTA link in the empty state:
+
 ```html
 <div id="cart-empty">
-    <p>Belum ada pesanan.</p>
-    <p>Silakan pilih menu terlebih dahulu.</p>
-    <a href="#menu" class="empty-cta">Lihat Menu</a>
+  <p>Belum ada pesanan.</p>
+  <p>Silakan pilih menu terlebih dahulu.</p>
+  <a href="#menu" class="empty-cta">Lihat Menu</a>
 </div>
 ```
 
@@ -804,7 +845,8 @@ Add a CTA link in the empty state:
 
 ### Current State
 
-**There is NO order summary.** The cart section shows items but doesn't provide a clear summary view during checkout.
+**There is NO order summary.** The cart section shows items but doesn't provide
+a clear summary view during checkout.
 
 ### What's Missing
 
@@ -812,7 +854,8 @@ Add a CTA link in the empty state:
 2. **No delivery/pickup option**
 3. **No order notes field**
 4. **No estimated time**
-5. **Summary is hidden in confirm() dialog** - user can't review before clicking checkout
+5. **Summary is hidden in confirm() dialog** - user can't review before clicking
+   checkout
 
 ### Proposed Order Summary
 
@@ -840,7 +883,8 @@ Add a CTA link in the empty state:
 
 ### Current State
 
-**Tidak ada delivery flow.** Website assumes all orders are delivery. No option for pickup.
+**Tidak ada delivery flow.** Website assumes all orders are delivery. No option
+for pickup.
 
 ### What's Missing
 
@@ -852,7 +896,9 @@ Add a CTA link in the empty state:
 
 ### Impact
 
-Users who want to PICK UP their order have no way to indicate this. The WhatsApp message doesn't distinguish between delivery and pickup orders. The business owner has to ask via WhatsApp.
+Users who want to PICK UP their order have no way to indicate this. The WhatsApp
+message doesn't distinguish between delivery and pickup orders. The business
+owner has to ask via WhatsApp.
 
 ### Proposed Flow
 
@@ -884,6 +930,7 @@ Add to WhatsApp message:
 ### Importance for UMKM
 
 For a small UMKM like Nasi Bakar Mama Aura:
+
 - Many customers prefer pickup (no delivery fee)
 - Pickup orders are easier to fulfill
 - Pickup reduces delivery logistics
@@ -893,12 +940,12 @@ For a small UMKM like Nasi Bakar Mama Aura:
 ```javascript
 // Add to generateWhatsAppMessage()
 var metode = document.querySelector('input[name="metode"]:checked').value;
-message += '*Metode:* ' + metode + '\n';
+message += "*Metode:* " + metode + "\n";
 
-if (metode === 'Pickup') {
-    message += 'Lokasiambil: Jl. Bukit Cinere 1\n';
+if (metode === "Pickup") {
+  message += "Lokasiambil: Jl. Bukit Cinere 1\n";
 } else {
-    message += 'Area antar: ' + selectedArea + '\n';
+  message += "Area antar: " + selectedArea + "\n";
 }
 ```
 
@@ -936,14 +983,17 @@ if (metode === 'Pickup') {
 
 ### Implementation Effort
 
-| Priority | Items | Effort |
-|----------|-------|--------|
-| CRITICAL | 2 items | 2-3 hours |
-| HIGH | 4 items | 3-4 hours |
-| MEDIUM | 5 items | 4-5 hours |
-| LOW | 5 items | 2-3 hours |
-| **Total** | | **11-15 hours** |
+| Priority  | Items   | Effort          |
+| --------- | ------- | --------------- |
+| CRITICAL  | 2 items | 2-3 hours       |
+| HIGH      | 4 items | 3-4 hours       |
+| MEDIUM    | 5 items | 4-5 hours       |
+| LOW       | 5 items | 2-3 hours       |
+| **Total** |         | **11-15 hours** |
 
 ---
 
-> **Keseluruhan:** Checkout system fungsional dan cukup untuk MVP. Kekurangan utama: tidak ada error messages, tidak ada order summary yang visible, tidak ada pickup/delivery option, dan phone validation terlalu permisif. Perbaikan pada area ini akan meningkatkan conversion rate dan user confidence.
+> **Keseluruhan:** Checkout system fungsional dan cukup untuk MVP. Kekurangan
+> utama: tidak ada error messages, tidak ada order summary yang visible, tidak
+> ada pickup/delivery option, dan phone validation terlalu permisif. Perbaikan
+> pada area ini akan meningkatkan conversion rate dan user confidence.

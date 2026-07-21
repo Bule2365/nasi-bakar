@@ -1,63 +1,54 @@
 // ==========================================
 // BUSINESS DATA - Nasi Bakar Mama Aura
 // ==========================================
-// Update data bisnis di sawahilah jika ada perubahan
 
-const BUSINESS_DATA = {
-    nama: "Nasi Bakar Mama Aura",
-    alamat: "Jl. Bukit Cinere 1",
-    whatsappNumber: "+62 813-1028-3191",
+var WHATSAPP_NUMBER = '6281310283191';
+
+var BUSINESS_DATA = {
+    nama: 'Nasi Bakar Mama Aura',
+    alamat: 'Jl. Pangkalan Jati Baru No. 58, Cinere, Depok',
     jamOperasional: {
-        buka: "06:30 AM",
-        tutup: "10:00 AM",
-        zona: "WIB"
-    },
-    operasionalNotice: "Pesanan di luar jam operasional (06:30 AM - 10:00 AM WIB) akan diproses pada hari berikutnya."
+        buka: '06:30',
+        tutup: '10:00',
+        zona: 'WIB'
+    }
 };
 
-// ==========================================
-// MENU DATA
-// ==========================================
-// Struktur menu:
-//   - id      : identifier unik (string)
-//   - name    : nama produk (string)
-//   - price   : harga dalam Rupiah (number)
-
-const MENU_DATA = [
+var MENU_DATA = [
     {
-        id: "ayam",
-        name: "Nasi Bakar Ayam Suwir",
+        id: 'ayam',
+        name: 'Nasi Bakar Ayam Suwir',
         price: 10000,
-        image: "assets/images/nasiBakar-ayamSuwir.png"
+        image: 'assets/images/nasiBakar-ayamSuwir.jpg'
     },
     {
-        id: "tongkol",
-        name: "Nasi Bakar Tongkol",
+        id: 'tongkol',
+        name: 'Nasi Bakar Tongkol',
         price: 10000,
-        image: "assets/images/nasiBakar-tongkol.png"
+        image: 'assets/images/nasiBakar-tongkol.jpg'
     },
     {
-        id: "ayam-jamur",
-        name: "Nasi Bakar Ayam Jamur Suwir",
+        id: 'ayam-jamur',
+        name: 'Nasi Bakar Ayam Jamur Suwir',
         price: 10000,
-        image: "assets/images/nasiBakar-ayamJamurSuwir.png"
+        image: 'assets/images/nasiBakar-ayamJamurSuwir.jpg'
     },
     {
-        id: "ati-ampela",
-        name: "Nasi Bakar Ati Ampela",
+        id: 'ati-ampela',
+        name: 'Nasi Bakar Ati Ampela',
         price: 10000,
-        image: "assets/images/nasiBakar-atiAmpela.png"
+        image: 'assets/images/nasiBakar-atiAmpela.jpg'
     },
     {
-        id: "cumi",
-        name: "Nasi Bakar Cumi",
+        id: 'cumi',
+        name: 'Nasi Bakar Cumi',
         price: 13000,
-        image: "assets/images/nasiBakar-cumi.png"
+        image: 'assets/images/nasiBakar-cumi.jpg'
     },
     {
-        id: "teri",
-        name: "Nasi Bakar Teri",
+        id: 'teri',
+        name: 'Nasi Bakar Teri',
         price: 13000,
-        image: "assets/images/nasiBakar-teri.png"
+        image: 'assets/images/nasiBakar-teri.jpg'
     }
 ];

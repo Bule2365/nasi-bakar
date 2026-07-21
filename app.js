@@ -27,6 +27,37 @@
         return getCartItems().reduce(function (sum, item) { return sum + item.qty; }, 0);
     }
 
+    function getRecipientInfo() {
+        var nameEl = document.getElementById('recipient-name');
+        var addressEl = document.getElementById('delivery-address');
+        return {
+            name: nameEl ? nameEl.value.trim() : '',
+            address: addressEl ? addressEl.value.trim() : ''
+        };
+    }
+
+    function validateForm() {
+        var info = getRecipientInfo();
+        var errors = [];
+        if (!info.name) errors.push('Nama penerima harus diisi');
+        if (!info.address) errors.push('Alamat pengiriman harus diisi');
+        return errors;
+    }
+
+    function showFormErrors(errors) {
+        var nameEl = document.getElementById('recipient-name');
+        var addressEl = document.getElementById('delivery-address');
+        nameEl.style.borderColor = !getRecipientInfo().name ? 'var(--color-primary)' : '';
+        addressEl.style.borderColor = !getRecipientInfo().address ? 'var(--color-primary)' : '';
+    }
+
+    function resetFormStyles() {
+        var nameEl = document.getElementById('recipient-name');
+        var addressEl = document.getElementById('delivery-address');
+        if (nameEl) nameEl.style.borderColor = '';
+        if (addressEl) addressEl.style.borderColor = '';
+    }
+
     function generateSingleWhatsAppUrl(menuName) {
         var message = 'Halo, saya ingin pesan ' + menuName;
         return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
@@ -36,7 +67,11 @@
         var items = getCartItems();
         if (items.length === 0) return '#';
 
-        var message = 'Halo, saya ingin pesan Nasi Bakar Mama Aura.\n\nPesanan:\n';
+        var info = getRecipientInfo();
+        var message = 'Halo, saya ingin pesan Nasi Bakar Mama Aura.\n\n';
+        message += 'Nama: ' + (info.name || '-') + '\n';
+        message += 'Alamat: ' + (info.address || '-') + '\n\n';
+        message += 'Pesanan:\n';
         items.forEach(function (item, i) {
             message += (i + 1) + '. ' + item.name + ' x' + item.qty + ' = Rp ' + (item.price * item.qty).toLocaleString('id-ID') + '\n';
         });
@@ -44,10 +79,62 @@
         return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
     }
 
+    function updateCartButton() {
+        var waBtn = document.getElementById('cart-wa-btn');
+        var totalQty = getCartTotalQty();
+        var errors = validateForm();
+
+        if (errors.length > 0) {
+            waBtn.href = '#';
+            waBtn.textContent = 'Isi nama & alamat dulu';
+            waBtn.classList.add('cart-wa-btn--disabled');
+        } else {
+            waBtn.href = generateCartWhatsAppUrl();
+            waBtn.textContent = 'Pesan via WhatsApp (' + totalQty + ' item)';
+            waBtn.classList.remove('cart-wa-btn--disabled');
+        }
+    }
+
+    function attachFormEvents() {
+        var nameEl = document.getElementById('recipient-name');
+        var addressEl = document.getElementById('delivery-address');
+
+        if (nameEl && !nameEl.dataset.bound) {
+            nameEl.dataset.bound = '1';
+            nameEl.addEventListener('input', function () {
+                resetFormStyles();
+                updateCartButton();
+            });
+        }
+
+        if (addressEl && !addressEl.dataset.bound) {
+            addressEl.dataset.bound = '1';
+            addressEl.addEventListener('input', function () {
+                resetFormStyles();
+                updateCartButton();
+            });
+        }
+    }
+
+    function attachCartButtonEvent() {
+        var waBtn = document.getElementById('cart-wa-btn');
+        if (waBtn && !waBtn.dataset.bound) {
+            waBtn.dataset.bound = '1';
+            waBtn.addEventListener('click', function (e) {
+                var errors = validateForm();
+                if (errors.length > 0) {
+                    e.preventDefault();
+                    showFormErrors(errors);
+                    alert(errors.join('\n'));
+                    return false;
+                }
+            });
+        }
+    }
+
     function renderCartSummary() {
         var summaryEl = document.getElementById('cart-summary');
         var items = getCartItems();
-        var totalQty = getCartTotalQty();
         var totalPrice = getCartTotal();
 
         if (items.length === 0) {
@@ -70,9 +157,8 @@
         document.getElementById('cart-items').innerHTML = itemsHtml;
         document.getElementById('cart-total-harga').textContent = 'Rp ' + totalPrice.toLocaleString('id-ID');
 
-        var waBtn = document.getElementById('cart-wa-btn');
-        waBtn.href = generateCartWhatsAppUrl();
-        waBtn.textContent = 'Pesan via WhatsApp (' + totalQty + ' item)';
+        updateCartButton();
+        attachFormEvents();
     }
 
     function renderMenu() {
@@ -88,7 +174,7 @@
                         '<div class="menu-card-price">Rp ' + menu.price.toLocaleString('id-ID') + '</div>' +
                         '<div class="menu-card-actions">' +
                             '<div class="qty-controls">' +
-                                '<button class="btn-qty" data-id="' + menu.id + '" data-action="decrease"' + (qty === 0 ? ' disabled' : '') + '>−</button>' +
+                                '<button class="btn-qty" data-id="' + menu.id + '" data-action="decrease"' + (qty === 0 ? ' disabled' : '') + '>&minus;</button>' +
                                 '<span class="qty-display">' + qty + '</span>' +
                                 '<button class="btn-qty" data-id="' + menu.id + '" data-action="increase">+</button>' +
                             '</div>' +
@@ -126,4 +212,5 @@
     }
 
     renderMenu();
+    attachCartButtonEvent();
 })();

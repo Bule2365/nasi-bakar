@@ -45,7 +45,6 @@ const cartTotalEl = document.getElementById('cart-total');
 const totalHargaEl = document.getElementById('total-harga');
 const namaInputEl = document.getElementById('nama');
 const whatsappInputEl = document.getElementById('whatsapp');
-const alamatInputEl = document.getElementById('alamat');
 const checkoutBtnEl = document.getElementById('btn-checkout');
 
 // ==========================================
@@ -75,20 +74,12 @@ function isCartNotEmpty() {
     return cart.length > 0;
 }
 
-function validateAlamat(alamat) {
-    const isValid = alamat.trim().length >= 5;
-    alamatInputEl.classList.toggle('error', !isValid && alamat.length > 0);
-    alamatInputEl.classList.toggle('success', isValid);
-    return isValid;
-}
-
 function validateForm() {
     const isNameValid = validateName(namaInputEl.value);
     const isPhoneValid = validateWhatsApp(whatsappInputEl.value);
-    const isAlamatValid = validateAlamat(alamatInputEl.value);
     const hasItems = isCartNotEmpty();
 
-    return isNameValid && isPhoneValid && isAlamatValid && hasItems;
+    return isNameValid && isPhoneValid && hasItems;
 }
 
 function updateCheckoutButton() {
@@ -108,15 +99,13 @@ const WHATSAPP_NUMBER = '6281310283191';
 function generateWhatsAppMessage() {
     const nama = namaInputEl.value.trim();
     const whatsapp = whatsappInputEl.value.trim();
-    const alamat = alamatInputEl.value.trim();
     const totalItems = calculateTotalItems();
     const totalPrice = calculateTotalPrice();
 
     let message = 'Halo, saya ingin pesan Nasi Bakar Mama Aura.\n\n';
     message += '*Data Pemesan:*\n';
     message += 'Nama: ' + nama + '\n';
-    message += 'WhatsApp: ' + whatsapp + '\n';
-    message += 'Alamat: ' + alamat + '\n\n';
+    message += 'WhatsApp: ' + whatsapp + '\n\n';
     message += '*Pesanan:*\n';
 
     cart.forEach(function(item, index) {
@@ -341,10 +330,6 @@ function attachFormEventListeners() {
     });
 
     whatsappInputEl.addEventListener('input', function() {
-        updateCheckoutButton();
-    });
-
-    alamatInputEl.addEventListener('input', function() {
         updateCheckoutButton();
     });
 

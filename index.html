@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nasi Bakar Mama Aura - Nasi bakar enak dan lezat">
-    <title>Nasi Bakar Mama Aura</title>
+    <meta name="description" content="Nasi Bakar Mama Aura - Nasi bakar segar setiap pagi di Cinere, Gandul, Limo, dan Pangkalan Jati. Pesan sekarang via WhatsApp!">
+    <meta name="keywords" content="Nasi Bakar Cinere, Nasi Bakar Gandul, Nasi Bakar Limo, Nasi Bakar Pangkalan Jati, Nasi Bakar Mama Aura">
+    <meta name="author" content="Nasi Bakar Mama Aura">
+    <meta property="og:title" content="Nasi Bakar Mama Aura">
+    <meta property="og:description" content="Nasi bakar segar setiap pagi. Pesan sekarang via WhatsApp!">
+    <meta property="og:type" content="website">
+    <title>Nasi Bakar Mama Aura | Nasi Bakar Segar Cinere, Gandul, Limo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navbar / Hero -->
-    <header>
+    <!-- Hero Section -->
+    <header id="hero">
         <nav>
             <h1>Nasi Bakar Mama Aura</h1>
         </nav>
+        <div class="hero-content">
+            <p class="hero-tagline">Segar Setiap Pagi</p>
+            <p class="hero-desc">Nasi bakar dengan isian ayam suwir, tongkol, cumi, dan teri. Dibuat setiap pagi dengan bahan segar pilihan.</p>
+            <div class="hero-info">
+                <span class="hero-badge">6 Menu</span>
+                <span class="hero-badge">Mulai Rp10.000</span>
+                <span class="hero-badge">06:30 - 10:00 WIB</span>
+            </div>
+            <p class="hero-stock">Stok terbatas setiap hari!</p>
+            <a href="#menu" class="hero-cta">Pesan Sekarang</a>
+        </div>
     </header>
 
     <main>
-
-        <!-- Jam Operasional -->
-        <section id="jam-operasional">
-            <h2>Jam Operasional</h2>
-            <p>06:30 AM - 10:00 AM WIB</p>
-            <p>Jl. Bukit Cinere 1</p>
-            <p>Pesanan di luar jam operasional (06:30 AM - 10:00 AM WIB) akan diproses pada hari berikutnya.</p>
-        </section>
 
         <!-- Menu Produk -->
         <section id="menu">
@@ -32,6 +40,35 @@
             <div id="menu-list">
                 <!-- Menu items akan dirender oleh JavaScript -->
             </div>
+        </section>
+
+        <!-- Trust Building: Kenapa Memilih Mama Aura -->
+        <section id="kenapa-memilih">
+            <h2>Kenapa Memilih Mama Aura?</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <span class="trust-icon">🍳</span>
+                    <h3>Dibuat Setiap Pagi</h3>
+                    <p>Nasi bakar dibuat fresh setiap pagi, bukan dari stok kemarin.</p>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">🌶️</span>
+                    <h3>Bumbu Khas</h3>
+                    <p>Resep turun temurun dengan bumbu pilihan yang kaya rempah.</p>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon">📦</span>
+                    <h3>Praktis & Mudah</h3>
+                    <p>Cukup pesan via WhatsApp, nasi bakar siap diantar atau diambil.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Building: Tentang Mama Aura -->
+        <section id="tentang">
+            <h2>Tentang Mama Aura</h2>
+            <p>Nasi Bakar Mama Aura adalah usaha rumahan yang berlokasi di Cinere. Kami mulai berjualan sejak tahun 2020 dengan satu tujuan: menyediakan nasi bakar enak, segar, dan terjangkau untuk warga sekitar.</p>
+            <p>Setiap nasi bakar dibuat dengan penuh cinta menggunakan bahan-bahan segar pilihan. Dari ayam suwir, tongkol, cumi, hingga teri, semuanya dimasak dengan bumbu khas yang bikin nagih.</p>
         </section>
 
         <!-- Shopping Cart -->
@@ -76,16 +113,6 @@
                         maxlength="15"
                     >
                 </div>
-                <div class="form-group">
-                    <label for="alamat">Alamat Pengiriman</label>
-                    <textarea 
-                        id="alamat" 
-                        name="alamat" 
-                        placeholder="Masukkan alamat pengiriman" 
-                        required
-                        rows="3"
-                    ></textarea>
-                </div>
             </form>
         </section>
 
@@ -96,32 +123,40 @@
             </button>
         </section>
 
-        <!-- Alamat Tempat Jualan -->
-        <section id="alamat-lokasi">
-            <h2>Alamat Kami</h2>
-            <p>Jl. Bukit Cinere 1</p>
+        <!-- Trust Building: Informasi Lokasi -->
+        <section id="lokasi">
+            <h2>Lokasi Kami</h2>
+            <p class="lokasi-alamat">📍 Jl. Bukit Cinere 1</p>
+            <p class="lokasi-jam">🕐 Jam Operasional: 06:30 - 10:00 WIB</p>
+            <p class="lokasi-catatan">Pesanan di luar jam operasional akan diproses hari berikutnya.</p>
+            <a 
+                href="https://www.google.com/maps/search/?api=1&query=Jl.+Bukit+Cinere+1" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="map-link"
+                title="Buka di Google Maps">
+                <div class="map-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <p>Klik untuk buka di Google Maps</p>
+                    <span>Jl. Bukit Cinere 1</span>
+                </div>
+            </a>
         </section>
 
-        <!-- Google Maps -->
-        <section id="google-maps">
-            <h2>Lokasi Kami</h2>
-            <div class="map-container">
-                <a 
-                    href="https://www.google.com/maps/search/?api=1&query=Jl.+Bukit+Cinere+1" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="map-link"
-                    title="Buka di Google Maps">
-                    <div class="map-placeholder">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <p>Klik untuk buka di Google Maps</p>
-                        <span>Jl. Bukit Cinere 1</span>
-                    </div>
-                </a>
-            </div>
+        <!-- Trust Building: Informasi Area Pelayanan (Local SEO) -->
+        <section id="area-pelayanan">
+            <h2>Area Pelayanan Kami</h2>
+            <p>Kami melayani pengiriman nasi bakar segar ke area sekitar Cinere dan sekitarnya:</p>
+            <ul class="area-list">
+                <li>📍 <strong>Cinere</strong> - Area utama pelayanan</li>
+                <li>📍 <strong>Gandul</strong> - Siap antar</li>
+                <li>📍 <strong>Limo</strong> - Siap antar</li>
+                <li>📍 <strong>Pangkalan Jati</strong> - Siap antar</li>
+            </ul>
+            <p class="area-note">Untuk area di luar daftar di atas, silakan hubungi kami terlebih dahulu untuk mengecek ketersediaan pengiriman.</p>
         </section>
 
     </main>
@@ -129,7 +164,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Nasi Bakar Mama Aura. All rights reserved.</p>
-        <p>Jl. Bukit Cinere 1</p>
+        <p>Jl. Bukit Cinere 1 | Cinere, Depok</p>
     </footer>
 
     <script src="data.js"></script>

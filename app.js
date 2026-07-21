@@ -45,17 +45,25 @@
     }
 
     function showFormErrors(errors) {
-        var nameEl = document.getElementById('recipient-name');
-        var addressEl = document.getElementById('delivery-address');
-        nameEl.style.borderColor = !getRecipientInfo().name ? 'var(--color-primary)' : '';
-        addressEl.style.borderColor = !getRecipientInfo().address ? 'var(--color-primary)' : '';
+        var nameGroup = document.getElementById('name-group');
+        var addressGroup = document.getElementById('address-group');
+        if (!getRecipientInfo().name) {
+            nameGroup.classList.add('has-error');
+        } else {
+            nameGroup.classList.remove('has-error');
+        }
+        if (!getRecipientInfo().address) {
+            addressGroup.classList.add('has-error');
+        } else {
+            addressGroup.classList.remove('has-error');
+        }
     }
 
     function resetFormStyles() {
-        var nameEl = document.getElementById('recipient-name');
-        var addressEl = document.getElementById('delivery-address');
-        if (nameEl) nameEl.style.borderColor = '';
-        if (addressEl) addressEl.style.borderColor = '';
+        var nameGroup = document.getElementById('name-group');
+        var addressGroup = document.getElementById('address-group');
+        if (nameGroup) nameGroup.classList.remove('has-error');
+        if (addressGroup) addressGroup.classList.remove('has-error');
     }
 
     function generateSingleWhatsAppUrl(menuName) {

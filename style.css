@@ -165,7 +165,7 @@ header {
     font-size: 0.95rem;
     margin-bottom: var(--space-lg);
     opacity: 0.95;
-    max-width: 450px;
+    max-width: 480px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -235,6 +235,13 @@ section h2 {
     font-weight: 600;
 }
 
+.section-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    margin-top: calc(-1 * var(--space-sm));
+}
+
 /* ==========================================
    TENTANG
    ========================================== */
@@ -268,9 +275,15 @@ section h2 {
 }
 
 .trust-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto var(--space-sm);
+    background-color: rgba(212, 69, 26, 0.1);
+    border-radius: 50%;
+    color: var(--color-primary);
 }
 
 .trust-item h3 {
@@ -336,19 +349,154 @@ section h2 {
     margin-bottom: var(--space-sm);
 }
 
-.btn-pesan {
-    display: inline-block;
-    background-color: var(--color-whatsapp);
-    color: #fff;
-    padding: var(--space-sm) var(--space-md);
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    font-size: 0.8rem;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    white-space: nowrap;
+.menu-card-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
 }
 
-.btn-pesan:hover {
+/* Quantity Controls */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid var(--color-border-medium);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.btn-qty {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: var(--color-bg-section);
+    color: var(--color-text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease;
+    font-weight: 600;
+}
+
+.btn-qty:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.btn-qty:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.qty-display {
+    min-width: 28px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0 var(--space-xs);
+    background-color: #fff;
+    height: 32px;
+    line-height: 32px;
+}
+
+/* Single Item WhatsApp Button */
+.btn-pesan-single {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-whatsapp);
+    color: #fff;
+    border-radius: var(--radius-md);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.btn-pesan-single:hover {
+    background-color: var(--color-whatsapp-dark);
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   CART SUMMARY
+   ========================================== */
+
+.cart-summary {
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    background-color: var(--color-bg-card);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+}
+
+.cart-summary h3 {
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+}
+
+.cart-items {
+    margin-bottom: var(--space-md);
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border-light);
+    font-size: 0.9rem;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-name {
+    flex: 1;
+}
+
+.cart-item-qty {
+    margin: 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.cart-item-price {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.cart-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    border-top: 2px solid var(--color-primary);
+    margin-bottom: var(--space-md);
+    font-weight: 600;
+}
+
+.cart-total-price {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+}
+
+.cart-wa-btn {
+    display: block;
+    text-align: center;
+    background-color: var(--color-whatsapp);
+    color: #fff;
+    padding: 0.875rem;
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cart-wa-btn:hover {
     background-color: var(--color-whatsapp-dark);
     transform: translateY(-1px);
 }
@@ -547,7 +695,7 @@ section h2 {
 }
 
 .faq-list details[open] summary::after {
-    content: '−';
+    content: '\2212';
 }
 
 .faq-list details p {
@@ -716,7 +864,7 @@ footer p:last-child {
 
     .hero-desc {
         font-size: 1.1rem;
-        max-width: 500px;
+        max-width: 520px;
     }
 
     .hero-badge {
@@ -770,11 +918,6 @@ footer p:last-child {
 
     .menu-card-price {
         font-size: 1.05rem;
-    }
-
-    .btn-pesan {
-        padding: 0.6rem var(--space-lg);
-        font-size: 0.85rem;
     }
 
     .step-content strong {

@@ -3,10 +3,12 @@
 // ==========================================
 
 var WHATSAPP_NUMBER = '6281310283191';
+var GOOGLE_MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=-6.334712,106.787392';
 
 var BUSINESS_DATA = {
     nama: 'Nasi Bakar Mama Aura',
-    alamat: 'Jl. Pangkalan Jati Baru No. 58, Cinere, Depok',
+    alamat: 'Jl. Bukit Cinere 1, Cinere, Depok',
+    koordinat: { lat: -6.334712, lng: 106.787392 },
     jamOperasional: {
         buka: '06:30',
         tutup: '10:00',

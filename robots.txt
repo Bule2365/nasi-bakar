@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bule2365.github.io/nasi-bakar/sitemap.xml

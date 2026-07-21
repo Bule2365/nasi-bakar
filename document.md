@@ -1,336 +1,202 @@
-# PROJECT IDENTITY
+# NASI BAKAR
 
-Project Name:
-
-- Nasi Bakar Mama Aura
-
-Project Type:
-
-- Local Business Conversion Website (NOT Marketplace)
-
-Core Technology:
-
-- HTML
-- CSS
-- JavaScript
-- GitHub Pages
-- WhatsApp Checkout
-- Google Maps Link
-
-Core Philosophy:
-
-1. Mobile First.
-2. Local Business First.
-3. Fast Conversion.
-4. Easy Maintenance.
-5. Fast Performance.
-6. Local SEO.
-7. Trust Building.
-8. Simplicity over Complexity.
+> Dibuat setiap pagi dengan bahan pilihan dan cita rasa rumahan yang khas. Cocok untuk sarapan maupun makan pagi yang praktis, hangat, dan mengenyangkan.
 
 ---
 
-# PROJECT GOALS
+# INFORMASI BRAND
 
-Website ini dibuat untuk:
-
-1. Memperkenalkan Nasi Bakar Mama Aura.
-2. Membangun kepercayaan calon pelanggan.
-3. Memudahkan pelanggan melakukan pemesanan.
-4. Mendominasi Local SEO area sekitar.
-5. Mengarahkan pelanggan menuju WhatsApp Checkout.
-
-Target utama website ini BUKAN:
-
-- Marketplace.
-- Food Delivery Platform.
-- Membership Website.
-- Dashboard Website.
-
-Target utama website ini adalah:
-
-- Local Business Website.
+| Informasi        | Keterangan                                          |
+| ---------------- | --------------------------------------------------- |
+| Nama Brand       | Nasi Bakar                                          |
+| Jenis Usaha      | UMKM Kuliner                                        |
+| Kategori         | Makanan Rumahan                                     |
+| Jam Operasional  | 06.30 WIB - 10.00 WIB                               |
+| Sistem Pemesanan | WhatsApp                                            |
+| Area Pelayanan   | Cinere, Gandul, Limo, Pangkalan Jati dan sekitarnya |
+| Status Produk    | Fresh Made Every Morning                            |
 
 ---
 
-# TARGET AREA
+# TAGLINE
 
-Prioritas Area:
-
-- Cinere
-- Gandul
-- Limo
-- Pangkalan Jati
-- Area sekitar yang masih terjangkau.
-
-Target Local SEO:
-
-- Nasi Bakar Cinere.
-- Nasi Bakar Gandul.
-- Nasi Bakar Limo.
-- Nasi Bakar Pangkalan Jati.
-- Nasi Bakar Mama Aura.
+> Nasi Bakar Hangat, Fresh Setiap Pagi.
 
 ---
 
-# BUSINESS INFORMATION
+# DESKRIPSI BRAND
 
-Nama Usaha:
+Nasi Bakar merupakan usaha kuliner rumahan yang menyediakan berbagai varian nasi bakar dengan cita rasa khas Indonesia. Seluruh menu dibuat setiap pagi menggunakan bahan-bahan pilihan sehingga pelanggan dapat menikmati sajian yang hangat, segar, dan berkualitas.
 
-- Nasi Bakar Mama Aura
+Konsep utama dari Nasi Bakar adalah menyediakan sarapan praktis yang mengenyangkan dengan proses pemesanan yang mudah melalui WhatsApp. Seluruh menu dibuat dalam jumlah terbatas setiap harinya untuk menjaga kualitas rasa dan kesegaran produk.
 
-Alamat:
+---
 
-- Jl. Bukit Cinere 1
+# VISI
 
-Jam Operasional:
+Menjadi pilihan utama masyarakat dalam menikmati nasi bakar rumahan yang lezat, berkualitas, dan mudah dipesan setiap pagi.
+
+---
+
+# MISI
+
+- Menyediakan produk yang dibuat setiap hari menggunakan bahan berkualitas.
+- Memberikan pelayanan yang cepat dan ramah kepada pelanggan.
+- Menjaga kualitas rasa dan konsistensi produk.
+- Menghadirkan proses pemesanan yang sederhana dan nyaman.
+- Mengembangkan layanan yang berfokus pada kepuasan pelanggan.
+
+---
+
+# KEUNGGULAN PRODUK
+
+- Dibuat fresh setiap pagi.
+- Menggunakan bahan-bahan pilihan.
+- Memiliki berbagai varian menu yang dapat dipilih.
+- Praktis dan cocok untuk sarapan maupun makan pagi.
+- Proses pemesanan cepat melalui WhatsApp.
+- Produk dibuat dalam jumlah terbatas untuk menjaga kualitas.
+
+---
+
+# INFORMASI PEMESANAN
+
+## Jam Pemesanan
 
 - 06.30 WIB - 10.00 WIB
 
-Nomor WhatsApp:
+## Metode Pemesanan
 
-- +62 813-1028-3191
+1. Pilih menu yang diinginkan.
+2. Tentukan jumlah pesanan.
+3. Isi nama pelanggan.
+4. Isi nomor WhatsApp yang dapat dihubungi.
+5. Lakukan checkout.
+6. Pesanan akan dikirimkan melalui WhatsApp untuk dilakukan konfirmasi.
 
-Website Rules:
+## Catatan Pemesanan
 
-- Pesanan di luar jam operasional akan diproses pada hari berikutnya.
-- Stok produk dapat habis sewaktu-waktu.
-
----
-
-# PRODUCT INFORMATION
-
-Kategori Rp10.000:
-
-- Nasi Bakar Ayam Suwir
-- Nasi Bakar Ayam Jamur Suwir
-- Nasi Bakar Tongkol
-- Nasi Bakar Ati Ampela
-
-Kategori Rp13.000:
-
-- Nasi Bakar Cumi
-- Nasi Bakar Teri
+- Pemesanan dilakukan selama stok masih tersedia.
+- Produk dibuat dalam jumlah terbatas setiap harinya.
+- Apabila stok habis, pelanggan akan diinformasikan melalui WhatsApp.
+- Pastikan nomor WhatsApp yang diberikan aktif untuk memudahkan proses konfirmasi pesanan.
 
 ---
 
-# PROJECT STRUCTURE
+# DAFTAR MENU
 
-STRICT FILE STRUCTURE
+| Menu                        | Harga     |
+| --------------------------- | --------- |
+| Nasi Bakar Ayam Jamur Suwir | Rp 15.000 |
+| Nasi Bakar Ayam Suwir       | Rp 15.000 |
+| Nasi Bakar Tongkol          | Rp 15.000 |
+| Nasi Bakar Ati Ampela       | Rp 15.000 |
+| Nasi Bakar Cumi             | Rp 18.000 |
+| Nasi Bakar Teri             | Rp 15.000 |
 
-- index.html
-- style.css
-- data.js
-- app.js
-- document.md
-
-Assets:
-
-- assets/images/
-
----
-
-# USER EXPERIENCE RULES
-
-Target Checkout:
-
-- Kurang dari 30 detik.
-
-Target User:
-
-- Mobile User.
-- Android User.
-- First Time Customer.
-
-Prioritas:
-
-1. Mudah dipahami.
-2. Mudah digunakan.
-3. Mudah melakukan checkout.
-4. Mudah menemukan informasi bisnis.
+> Harga dapat berubah sewaktu-waktu mengikuti ketersediaan bahan baku dan kebijakan usaha.
 
 ---
 
-# HERO SECTION RULES
+# DESKRIPSI MENU
 
-Hero Section WAJIB menampilkan:
+### Nasi Bakar Ayam Jamur Suwir
 
-- Nama usaha.
-- Fresh Every Morning.
-- Deskripsi singkat produk.
-- Target area pelayanan.
-- Jumlah menu.
-- Harga produk.
-- Jam operasional.
-- Informasi stok terbatas.
-- Call To Action.
+Perpaduan ayam suwir dan jamur pilihan dengan bumbu khas yang menghasilkan rasa gurih dan lezat pada setiap gigitan.
 
----
+### Nasi Bakar Ayam Suwir
 
-# TRUST BUILDING RULES
+Nasi bakar dengan isian ayam suwir berbumbu yang cocok dinikmati sebagai menu sarapan maupun makan pagi.
 
-Website WAJIB memiliki section:
+### Nasi Bakar Tongkol
 
-1. Kenapa Memilih Mama Aura.
-2. Tentang Mama Aura.
-3. Informasi Lokasi.
-4. Informasi Jam Operasional.
-5. Informasi Area Pelayanan.
+Menghadirkan cita rasa gurih dan khas ikan tongkol yang dipadukan dengan bumbu rempah pilihan.
 
-Tujuan:
+### Nasi Bakar Ati Ampela
 
-- Membangun kepercayaan pelanggan.
-- Meningkatkan conversion.
-- Memperjelas identitas bisnis.
+Pilihan menu dengan perpaduan ati dan ampela yang kaya rasa dan cocok bagi pecinta olahan ayam tradisional.
+
+### Nasi Bakar Cumi
+
+Menggunakan cumi pilihan dengan cita rasa gurih yang khas dan tekstur yang nikmat untuk disantap selagi hangat.
+
+### Nasi Bakar Teri
+
+Perpaduan nasi hangat dengan teri pilihan yang menghasilkan rasa gurih dan menggugah selera.
 
 ---
 
-# LOCAL SEO RULES
+# AREA PELAYANAN
 
-WAJIB memasukkan informasi berikut:
+Saat ini layanan tersedia untuk wilayah:
 
 - Cinere
 - Gandul
 - Limo
 - Pangkalan Jati
-
-Gunakan penulisan yang natural.
-
-Prioritas:
-
-- Local SEO.
-- Local Business Information.
-- Mobile Experience.
+- Wilayah sekitar yang masih dapat dijangkau
 
 ---
 
-# CONVERSION RULES
+# ALAMAT USAHA
 
-Target Website:
-
-TRUST ↓ LOCAL SEO ↓ PERSUASI ↓ PRODUK ↓ CHECKOUT ↓ WHATSAPP ↓ SELESAI
-
-Website TIDAK BOLEH:
-
-- Memperumit checkout.
-- Menambahkan langkah yang tidak diperlukan.
-- Menambahkan fitur yang tidak memiliki dampak terhadap conversion.
+> Jl. Pangkalan Jati Baru No. 58, RT 02 / RW 08, Kelurahan Pangkalan Jati, Kecamatan Cinere, Kota Depok, Jawa Barat.
 
 ---
 
-# FORM VALIDATION RULES
+# INFORMASI WHATSAPP
 
-Nama:
+> Nomor WhatsApp dikelola langsung oleh pemilik usaha untuk melayani seluruh proses pemesanan dan konfirmasi pesanan.
 
-- Minimal 3 karakter.
-
-WhatsApp:
-
-- type="tel"
-- 10 sampai 15 digit angka.
-- Dibersihkan dari spasi dan simbol.
-
-Checkout hanya aktif apabila:
-
-- Nama valid.
-- Nomor WhatsApp valid.
-- Cart tidak kosong.
+> Seluruh pesanan akan dikirimkan melalui WhatsApp dalam bentuk ringkasan pesanan yang berisi nama pelanggan, daftar menu, jumlah pesanan, dan total pembayaran.
 
 ---
 
-# LOCAL STORAGE RULES
+# NILAI BRAND
 
-Simpan:
+Nasi Bakar dibangun dengan tiga nilai utama:
 
-- Cart.
+### Fresh
 
-JANGAN simpan:
+Seluruh produk dibuat setiap pagi untuk menjaga kualitas dan kesegaran makanan.
 
-- Nama pelanggan.
-- Nomor WhatsApp.
-- Informasi pribadi lainnya.
+### Quality
 
----
+Mengutamakan bahan baku yang baik serta menjaga konsistensi rasa pada setiap produk yang dihasilkan.
 
-# GOOGLE MAPS RULES
+### Simplicity
 
-Alamat:
-
-- Jl. Bukit Cinere 1
-
-Google Maps:
-
-- Menggunakan tautan Google Maps.
-- Tidak menggunakan API.
-- Tidak menggunakan backend.
+Menghadirkan pengalaman pemesanan yang sederhana, cepat, dan mudah melalui WhatsApp tanpa proses yang rumit.
 
 ---
 
-# PERFORMANCE RULES
+# TUJUAN WEBSITE
 
-Target:
+Website ini dibuat untuk:
 
-- Cepat dimuat.
-- Ringan.
-- Mobile First.
-- Mudah dipelihara.
-
-Prioritas:
-
-- HTML.
-- CSS.
-- JavaScript.
-
-Hindari:
-
-- Library yang tidak diperlukan.
-- Framework.
-- API eksternal yang tidak diperlukan.
+- Memperkenalkan brand kepada pelanggan.
+- Menampilkan katalog produk secara sederhana.
+- Mempermudah proses pemesanan melalui WhatsApp.
+- Memberikan informasi jam operasional dan area pelayanan.
+- Meningkatkan pengalaman pengguna ketika melakukan pemesanan secara online.
 
 ---
 
-# DO NOT ADD FEATURES
+# CATATAN PENGEMBANGAN
 
-DILARANG MENAMBAHKAN:
+Prioritas pengembangan berikutnya:
 
-- Backend.
-- Database.
-- Login.
-- Register.
-- Dashboard.
-- Payment Gateway.
-- Multi Page.
-- React.
-- Vue.
-- Tailwind.
-- TypeScript.
-- NodeJS.
-- NPM.
-- AI Chatbot.
-- Voucher.
-- Membership.
-- Email Service.
-
-Apabila sebuah fitur tidak membantu pelanggan membeli nasi bakar hari ini, maka
-fitur tersebut TIDAK BOLEH ditambahkan.
+- Optimasi ukuran gambar produk.
+- Peningkatan SEO lokal.
+- Penambahan Schema.org Local Business.
+- Penambahan catatan pesanan pada checkout.
+- Penambahan opsi pickup dan delivery.
+- Peningkatan aksesibilitas website.
+- Optimalisasi performa pada perangkat mobile.
+- Sentralisasi seluruh data bisnis agar menggunakan satu sumber informasi (single source of truth).
 
 ---
 
-# FINAL DECISION
-
-Nasi Bakar Mama Aura adalah:
-
-LOCAL BUSINESS CONVERSION WEBSITE.
-
-Fokus utama project ini adalah:
-
-- Local SEO.
-- Trust Building.
-- Conversion.
-- Performance.
-- Mobile First Experience.
-- Easy Maintenance.
-- WhatsApp Checkout.
-
-Seluruh keputusan pengembangan berikutnya WAJIB mengikuti document.md ini
-sebagai Single Source of Truth.
+> Versi Dokumen : 1.0.0
+> Status : Production Ready Documentation
+> Terakhir Diperbarui : 21 Juli 2026
